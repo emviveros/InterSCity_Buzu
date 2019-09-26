@@ -1,0 +1,32 @@
+#N canvas 41 297 442 434 10;
+#X obj 109 188 buzuDados;
+#X obj 159 225 list split 1, f 21;
+#X obj 181 277 list append;
+#X obj 116 269 t b;
+#X obj 159 371 outlet;
+#X obj 109 70 inlet;
+#X text 8 8 STOPS_UM_A_UM -;
+#X text 100 8 Retorna cada indentificador da lista de stops de uma
+determinada linha de ônibus um a um.;
+#X text 15 66 código da linha de ônibus, f 15;
+#X obj 179 71 inlet;
+#X obj 116 297 del 5;
+#X text 218 67 velocidade de leitura, f 12;
+#X obj 309 71 inlet;
+#X text 348 67 dia da semana;
+#X text 207 360 identificador de cada ponto de parada contida no campo
+stops da linha de ônibus, f 28;
+#X obj 109 121 list prepend stops;
+#X obj 109 142 list trim;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 0 4 0;
+#X connect 1 1 2 1;
+#X connect 2 0 1 0;
+#X connect 3 0 10 0;
+#X connect 5 0 15 0;
+#X connect 9 0 10 1;
+#X connect 10 0 2 0;
+#X connect 12 0 0 1;
+#X connect 15 0 16 0;
+#X connect 16 0 0 0;

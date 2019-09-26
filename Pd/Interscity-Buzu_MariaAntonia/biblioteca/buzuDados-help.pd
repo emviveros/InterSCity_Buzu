@@ -1,0 +1,90 @@
+#N canvas 508 28 650 736 10;
+#X obj 2 2 cnv 15 645 95 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 2 708 cnv 15 645 25 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 2 99 cnv 15 645 612 empty empty empty 20 12 0 14 -249724 -66577
+0;
+#X obj 127 658 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 54 191 buzu \$1;
+#X floatatom 54 164 5 0 0 0 - - -;
+#X obj 137 588 loadbang;
+#X obj 40 631 buzuDados, f 15;
+#X msg 62 230 start_time 917H-10-1;
+#X msg 76 266 interval 917H-10-0;
+#X msg 99 321 stops 917H-10-0;
+#X msg 123 378 coordenadas 390000292id;
+#X msg 137 484 avgspeed 610016845id-610016751id;
+#X msg 122 414 zona 390000292id;
+#X msg 114 168 -1;
+#X obj 40 691 print buzuDados;
+#X floatatom 168 606 5 0 7 0 - - -;
+#X msg 133 439 trajeto 917H-10-0;
+#X msg 137 606 4;
+#X msg 40 120 linhas 0;
+#X text 114 123 Lista todas as linhas de ônibus do sistema relacionadas
+ao dia da semana \, o argumento numérico corresponde ao intervalo
+em milissegundos entre o retorno de cada dado, f 85;
+#X text 19 9 [buzuDados] Recuperação de Dados - Interscity;
+#X text 144 168 Retorna o nome de uma linha de onibus a partir de um
+index \, indexadores negativos retornam o total de linhas de ônibus
+cadastradas, f 74;
+#X text 196 225 Retorna o dado de start_time referente a uma linha
+de ônibus;
+#X text 195 261 Retorna uma lista com os dados de interval referente
+a uma linha de ônibus, f 66;
+#X text 199 318 Retorna uma lista com os dados de stops referente a
+uma linha de ônibus, f 71;
+#X text 273 366 Retorna um par de coordenadas x y para um identificador
+recuperado de stops;
+#X text 230 408 Retorna a região da cidade referente ao ponto de parada
+de ônibus recuperado de stops;
+#X text 203 593 Dia da semana. Sem este dado \, [buzuDados] não funciona
+;
+#X text 153 656 bang quando finaliza arecuperação de dados;
+#X text 248 439 Retorna um identificador com os dados referente ao
+primeiro e último ponto de parada de uma linha de ônibus. Necessário
+para recuperação de dados de velocidade média;
+#X text 465 9 compativel com Pd Vanilla;
+#X text 235 288 Itera a lista com os dados de interval a um tempo definido
+em ms, f 66;
+#X obj 150 691 print FIM;
+#X obj 486 75 dados_interscity;
+#X text 62 64 ATENÇÃO!!! Para utilizar o objeto [buzuDados] é necessário
+sempre inicializar os datasets com o objeto [dados_interscity], f
+62;
+#X text 448 75 ====>;
+#X msg 88 287 interval 917H-10-0 250;
+#X msg 113 341 stops 917H-10-0 250;
+#X msg 46 139 linhas 50;
+#X text 238 339 itera lista com dados de stops a um tempo definido
+em ms, f 61;
+#X text 141 500 Retorna uma lista com as velocidades médias referentes
+a um trajeto cadastrado, f 78;
+#X text 27 34 Este objeto recupera dados do projeto buzuSP a utilizando
+2 entradas: mensagens no inlet esquerdo e um número inteiro de 0 a
+7 referenciando o dia da semana no inlet direito, f 88;
+#X msg 171 539 distancia 610016845id-610016751id;
+#X text 382 536 Retorna a distância do trajeto em metros, f 41;
+#X connect 3 0 33 0;
+#X connect 4 0 7 0;
+#X connect 5 0 4 0;
+#X connect 6 0 18 0;
+#X connect 7 0 15 0;
+#X connect 7 1 3 0;
+#X connect 8 0 7 0;
+#X connect 9 0 7 0;
+#X connect 10 0 7 0;
+#X connect 11 0 7 0;
+#X connect 12 0 7 0;
+#X connect 13 0 7 0;
+#X connect 14 0 4 0;
+#X connect 16 0 7 1;
+#X connect 17 0 7 0;
+#X connect 18 0 7 1;
+#X connect 19 0 7 0;
+#X connect 37 0 7 0;
+#X connect 38 0 7 0;
+#X connect 39 0 7 0;
+#X connect 43 0 7 0;

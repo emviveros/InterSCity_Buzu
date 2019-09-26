@@ -1,0 +1,28 @@
+#N canvas 233 96 430 524 10;
+#X obj 113 351 buzuDados;
+#X msg 113 303 coordenadas \$1;
+#X obj 113 153 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 113 191 linhas_uma_a_uma;
+#X obj 113 254 stops_um_a_um;
+#X obj 113 84 inlet;
+#X obj 113 416 outlet;
+#X obj 301 84 inlet;
+#X text 30 80 bang (incia e interrompe recuperação de dados), f
+13;
+#X text 338 82 dia da semana;
+#X text 13 25 RETORNA TODAS AS COORDENADAS CADASTRADAS NO DIA DA SEMANA
+UM A UM, f 65;
+#X obj 188 83 inlet;
+#X text 224 81 tempo de leitura, f 9;
+#X connect 0 0 6 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 1 0;
+#X connect 5 0 2 0;
+#X connect 7 0 3 2;
+#X connect 7 0 4 2;
+#X connect 7 0 0 1;
+#X connect 11 0 3 1;
+#X connect 11 0 4 1;

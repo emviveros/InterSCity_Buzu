@@ -1,0 +1,18 @@
+#N struct 1684-point float x0 float y0 float s;
+#N struct 1684-grid float x0 float y0 float s;
+#N canvas 533 360 328 300 10;
+#X obj 37 181 synth_buzin, f 24;
+#X obj 37 15 inlet dados;
+#X obj 37 111 route liga_desl~ coordenadas, f 42;
+#X obj 37 268 outlet~;
+#X obj 98 267 outlet~;
+#X obj 167 268 outlet~;
+#X obj 228 267 outlet~;
+#X connect 0 0 3 0;
+#X connect 0 1 4 0;
+#X connect 0 2 5 0;
+#X connect 0 3 6 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 2 1 0 2;
+#X connect 2 1 0 1;

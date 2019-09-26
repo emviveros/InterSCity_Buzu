@@ -1,0 +1,122 @@
+#N canvas 291 166 888 608 10;
+#X msg 93 138 buzu \$1;
+#X obj 93 169 buzuDados;
+#X obj 141 193 gera_id_de_trajeto;
+#X obj 161 271 list trim;
+#X obj 161 317 buzuDados;
+#N canvas 486 356 545 251 lista_de_velocidades_médias_da_linha_agora
+0;
+#X obj 28 26 inlet lista_de_avgspeed;
+#X obj 328 26 inlet hora_no_transporte;
+#X floatatom 328 48 5 0 0 0 - - -;
+#X obj 57 121 list-abs/list-idx;
+#X obj 57 149 list-abs/list-lastx, f 21;
+#X obj 180 26 inlet tamanho_da_lista;
+#X obj 57 206 outlet lista_com_valores_de_velocidade_média_da_linha
+;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 1;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 5 0 4 1;
+#X restore 204 347 pd lista_de_velocidades_médias_da_linha_agora;
+#X obj 36 321 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 193 218 t f f;
+#N canvas 282 264 272 300 conta_até 0;
+#X obj 93 132 + 1;
+#X obj 49 74 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 49 169 5 0 0 0 - - -;
+#X obj 49 132 f 0;
+#X msg 133 94 0;
+#X obj 133 75 sel -1;
+#X obj 27 24 inlet bang;
+#X obj 166 24 inlet máximo;
+#X obj 49 219 outlet contagem;
+#X obj 166 45 t b f;
+#X floatatom 197 69 5 0 0 0 - - -;
+#X connect 0 0 3 1;
+#X connect 1 0 3 0;
+#X connect 2 0 8 0;
+#X connect 3 0 0 0;
+#X connect 3 0 2 0;
+#X connect 3 0 5 0;
+#X connect 4 0 3 1;
+#X connect 5 0 4 0;
+#X connect 6 0 1 0;
+#X connect 7 0 9 0;
+#X connect 9 0 4 0;
+#X connect 9 1 5 1;
+#X connect 9 1 10 0;
+#X restore 36 378 pd conta_até;
+#X obj 36 453 list-abs/list-nth 0;
+#X obj 36 423 list store;
+#X obj 36 399 t b f;
+#X obj 105 359 - 1;
+#X obj 36 60 route bang;
+#X obj 63 562 outlet velocidade_média_de_um_trajeto;
+#X obj 298 562 outlet lista_de_velocidade_média_de_trajetos_da_linha
+;
+#X obj 640 561 outlet bang_de_fim;
+#X obj 204 368 t b a a;
+#X obj 36 474 t b f;
+#X obj 36 15 inlet entrada;
+#X text 125 14 número = índice da linha_de_ônibus;
+#X text 125 26 bang = retorna um valor de velocidade média;
+#X text 564 136 Recebido um bang retorna um valor de velocidade média
+da linha de ônibus referida previamente por um índice numérico.
+, f 41;
+#X obj 564 15 inlet dia_da_semana;
+#X obj 426 15 inlet hora;
+#X obj 161 250 list prepend avgspeed;
+#X obj 93 119 f;
+#X obj 426 36 t f f, f 8;
+#X obj 426 57 change;
+#X obj 426 78 bang;
+#X text 564 194 Sempre que a hora muda \, retorna a lista de velocidades
+médias., f 41;
+#X text 564 232 Se a hora muda e esta abstração recebe um bang na
+entrada \, o índice da velocidade média individual de um trajeto
+é mantido \, como uma metafóra para o ônibus continuando seu trajeto
+enquanto o tempo passa., f 41;
+#X obj 564 36 t f f f;
+#X text 564 80 Dado um índice numérico retorna uma lista com as velocidades
+média dos trajetos da linha de ônibus na hora do transporte pelo
+segundo outlet., f 41;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 25 0;
+#X connect 2 1 7 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 17 0;
+#X connect 6 0 8 0;
+#X connect 7 0 5 1;
+#X connect 7 1 12 0;
+#X connect 8 0 11 0;
+#X connect 9 0 18 0;
+#X connect 10 0 9 0;
+#X connect 11 0 10 0;
+#X connect 11 1 9 1;
+#X connect 12 0 8 1;
+#X connect 13 0 6 0;
+#X connect 13 1 26 0;
+#X connect 17 0 16 0;
+#X connect 17 1 15 0;
+#X connect 17 2 10 1;
+#X connect 18 0 16 0;
+#X connect 18 1 14 0;
+#X connect 19 0 13 0;
+#X connect 23 0 32 0;
+#X connect 24 0 27 0;
+#X connect 25 0 3 0;
+#X connect 26 0 0 0;
+#X connect 27 0 28 0;
+#X connect 27 1 5 2;
+#X connect 28 0 29 0;
+#X connect 29 0 26 0;
+#X connect 32 0 1 1;
+#X connect 32 1 2 2;
+#X connect 32 2 4 1;

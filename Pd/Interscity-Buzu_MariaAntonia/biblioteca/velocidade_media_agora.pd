@@ -1,0 +1,10 @@
+#N canvas 0 22 352 234 10;
+#X obj 28 22 inlet lista_de_avgspeed;
+#X obj 182 22 inlet hora_no_transporte;
+#X floatatom 182 84 5 0 0 0 - - -;
+#X obj 83 117 list-abs/list-idx;
+#X obj 83 172 outlet valor_de_velocidade_média;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 1;
+#X connect 3 0 4 0;
