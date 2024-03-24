@@ -56,10 +56,10 @@
 #X obj 277 523 panner~;
 #X text 252 533 Y;
 #X obj 86 351 sig~ 1;
-#X obj 16 559 number~;
-#X obj 157 562 number~;
-#X obj 281 580 number~;
-#X obj 422 583 number~;
+#X obj 16 559 else/numbox~;
+#X obj 157 562 else/numbox~;
+#X obj 281 580 else/numbox~;
+#X obj 422 583 else/numbox~;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 1 1 3 0;
