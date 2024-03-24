@@ -1,18 +1,16 @@
-#N canvas 128 100 1075 655 10;
+#N canvas 561 77 1075 655 10;
 #X declare -path ./biblioteca;
 #X obj 889 10 declare -path ./biblioteca;
-#X text 970 52 Dependências \; Cyclone \; Zexy \; list-abs, f 14
-;
+#X text 970 52 Dependências \; Cyclone \; Zexy \; list-abs, f 14;
 #X obj 949 29 dados_interscity;
 #X msg 77 536 disconnect;
 #X obj 48 581 netsend -u -b;
 #X obj 48 389 list prepend send;
 #X obj 48 408 list trim;
-#N canvas 213 60 1044 546 drone 0;
+#N canvas 1574 231 1044 546 drone 0;
 #X obj 483 512 outlet mensagem_oscformat;
-#X floatatom 141 88 5 0 0 0 - - -;
-#X obj 49 89 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
-;
+#X floatatom 141 88 5 0 0 0 - - - 0;
+#X obj 49 89 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 256 87 r \$0-hora;
 #X obj 367 93 r \$0-dia;
 #X obj 49 129 metro 1200;
@@ -26,19 +24,17 @@
 #X msg 503 303 list velocidade_do_trajeto_atual \$1;
 #X obj 739 354 t a b;
 #X msg 739 333 list velocidade_media_da_linha \$1;
-#X obj 49 10 inlet bang_requisição_de_dado/idx_da_linha_de_onibus
-;
+#X obj 49 10 inlet bang_requisição_de_dado/idx_da_linha_de_onibus;
 #X obj 49 60 route bang;
 #X msg 53 293 format sf;
 #X msg 343 292 format sf;
 #X msg 534 342 format sf;
 #X msg 770 372 format sf;
-#X obj 101 172 bng 12 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X floatatom 800 422 8 0 0 0 - - -;
+#X obj 101 172 bng 12 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
+#X floatatom 800 422 8 0 0 0 - - - 0;
 #X obj 800 477 outlet;
 #N canvas 432 310 586 300 ultima_linha_de_onibus 0;
-#X floatatom 363 188 5 0 0 0 - - -;
+#X floatatom 363 188 5 0 0 0 - - - 0;
 #X obj 63 54 r id_linha_test;
 #X obj 164 54 r id_linha_puts;
 #X obj 378 54 r id_linha_bean;
@@ -50,9 +46,7 @@
 #X obj 378 75 t f b;
 #X obj 90 122 del 200;
 #X obj 363 232 outlet última_linha_de_ônibus;
-#X text 39 192 retorna o número identificador da última linha de
-ônibus analisada no subpatch [pd melodias_linhas_de_onibus], f 40
-;
+#X text 39 192 retorna o número identificador da última linha de ônibus analisada no subpatch [pd melodias_linhas_de_onibus], f 40;
 #X connect 0 0 11 0;
 #X connect 1 0 6 0;
 #X connect 2 0 7 0;
@@ -80,9 +74,9 @@
 #X obj 739 219 route velocidade_média_da_linha;
 #X obj 530 56 loadbang;
 #X msg 108 412 velocidade_média_da_linha 31.4317;
-#X obj 108 391 prepend set;
-#X msg 528 100 pd~ start /Volumes/Troca/gDrive_MacbookPro/Programacao/Pd/Projetos/NuSom/Interscity-Buzu/biblioteca/dados_para_drone.pd
-;
+#X msg 528 100 pd~ start /Volumes/Troca/gDrive_MacbookPro/Programacao/Pd/Projetos/NuSom/Interscity-Buzu/biblioteca/dados_para_drone.pd;
+#X obj 108 369 list prepend set;
+#X obj 108 390 list trim;
 #X connect 1 0 28 0;
 #X connect 2 0 5 0;
 #X connect 3 0 29 0;
@@ -112,7 +106,7 @@
 #X connect 23 0 24 0;
 #X connect 25 0 17 0;
 #X connect 26 0 31 0;
-#X connect 26 0 37 0;
+#X connect 26 0 38 0;
 #X connect 27 0 26 0;
 #X connect 28 0 26 0;
 #X connect 29 0 26 0;
@@ -125,9 +119,10 @@
 #X connect 33 1 34 0;
 #X connect 34 0 15 0;
 #X connect 34 0 23 0;
-#X connect 35 0 38 0;
-#X connect 37 0 36 0;
-#X connect 38 0 26 0;
+#X connect 35 0 37 0;
+#X connect 37 0 26 0;
+#X connect 38 0 39 0;
+#X connect 39 0 36 0;
 #X coords 0 -1 1 1 87 16 1 30 170;
 #X restore 288 269 pd drone;
 #X obj 586 101 buzuTempo;
@@ -138,30 +133,24 @@
 #X obj 757 303 s \$0-min;
 #X obj 843 303 s \$0-seg;
 #X obj 929 303 s \$0-mseg;
-#X obj 581 357 cnv 15 480 280 empty empty Namespaces: 16 20 0 16 -233017
--66577 0;
+#X obj 581 357 cnv 15 480 280 empty empty Namespaces: 16 20 0 16 #e0e0e0 #404040 0;
 #X text 623 406 /buzu;
 #X text 686 432 /video;
 #X text 686 469 /drone;
-#X text 746 496 (parâmetros ou mensagens que os patchs precisarem)
-;
+#X text 746 496 (parâmetros ou mensagens que os patchs precisarem);
 #X text 746 513 /coordenadas;
 #X text 746 533 /avgspeed;
 #X text 746 551 /dia_da_semana;
 #X text 746 571 /hora;
 #X text 746 591 ... etc;
-#N canvas 54 95 1184 685 melodias_linhas_de_onibus 0;
+#N canvas 653 315 1184 685 melodias_linhas_de_onibus 0;
 #X obj 89 182 spigot;
-#X obj 122 157 tgl 15 0 empty \$0-LOOP_1 LOOP_1 17 7 0 10 -262144 -1
--1 1 1;
-#X floatatom 89 268 5 0 0 0 - - -;
-#X obj 223 380 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 22 154 tgl 11 0 empty \$0-Som_ON/OFF_1 Som_ON/OFF_1 17 7 0 10
--258113 -1 -1 1 1;
+#X obj 122 157 tgl 15 0 empty \$0-LOOP_1 LOOP_1 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X floatatom 89 268 5 0 0 0 - - - 0;
+#X obj 223 380 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 22 154 tgl 11 0 empty \$0-Som_ON/OFF_1 Som_ON/OFF_1 17 7 0 10 #fc0400 #000000 #000000 0 1;
 #X obj 89 244 urn 2120;
-#X floatatom 156 227 5 0 0 1 tempo_de_interação #0-tempo_de_interação
--;
+#X floatatom 156 227 5 0 0 1 tempo_de_interação \$0-tempo_de_interação - 0;
 #X obj 382 615 outlet mensagem_oscformat;
 #X obj 223 342 r \$0-dia;
 #X obj 89 453 oscformat /buzu/melodias_buzin/test;
@@ -169,40 +158,28 @@
 #X obj 682 453 oscformat /buzu/melodias_buzin/bean;
 #X obj 950 453 oscformat /buzu/melodias_buzin/anuns;
 #X obj 382 192 spigot;
-#X obj 415 167 tgl 15 0 empty \$0-LOOP_2 LOOP_2 17 7 0 10 -262144 -1
--1 1 1;
-#X floatatom 382 268 5 0 0 0 - - -;
-#X obj 516 379 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 315 164 tgl 11 0 empty \$0-Som_ON/OFF_2 Som_ON/OFF_2 17 7 0
-10 -258113 -1 -1 0 1;
+#X obj 415 167 tgl 15 0 empty \$0-LOOP_2 LOOP_2 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X floatatom 382 268 5 0 0 0 - - - 0;
+#X obj 516 379 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 315 164 tgl 11 0 empty \$0-Som_ON/OFF_2 Som_ON/OFF_2 17 7 0 10 #fc0400 #000000 #000000 0 1;
 #X obj 382 244 urn 2120;
-#X floatatom 449 237 5 0 0 1 tempo_de_interação #0-tempo_de_interação
--;
+#X floatatom 449 237 5 0 0 1 tempo_de_interação \$0-tempo_de_interação - 0;
 #X obj 516 342 r \$0-dia;
 #X obj 682 189 spigot;
-#X obj 715 164 tgl 15 0 empty \$0-LOOP_3 LOOP_3 17 7 0 10 -262144 -1
--1 1 1;
-#X floatatom 682 265 5 0 0 0 - - -;
-#X obj 816 376 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 615 161 tgl 11 0 empty \$0-Som_ON/OFF_3 Som_ON/OFF_3 17 7 0
-10 -258113 -1 -1 1 1;
+#X obj 715 164 tgl 15 0 empty \$0-LOOP_3 LOOP_3 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X floatatom 682 265 5 0 0 0 - - - 0;
+#X obj 816 376 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 615 161 tgl 11 0 empty \$0-Som_ON/OFF_3 Som_ON/OFF_3 17 7 0 10 #fc0400 #000000 #000000 0 1;
 #X obj 682 241 urn 2120;
-#X floatatom 749 234 5 0 0 1 tempo_de_interação #0-tempo_de_interação
--;
+#X floatatom 749 234 5 0 0 1 tempo_de_interação \$0-tempo_de_interação - 0;
 #X obj 816 339 r \$0-dia;
 #X obj 950 188 spigot;
-#X obj 983 163 tgl 15 0 empty \$0-LOOP_4 LOOP_4 17 7 0 10 -262144 -1
--1 1 1;
-#X floatatom 950 264 5 0 0 0 - - -;
-#X obj 1084 375 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 883 160 tgl 11 0 empty \$0-Som_ON/OFF_4 Som_ON/OFF_4 17 7 0
-10 -258113 -1 -1 0 1;
+#X obj 983 163 tgl 15 0 empty \$0-LOOP_4 LOOP_4 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X floatatom 950 264 5 0 0 0 - - - 0;
+#X obj 1084 375 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 883 160 tgl 11 0 empty \$0-Som_ON/OFF_4 Som_ON/OFF_4 17 7 0 10 #fc0400 #000000 #000000 0 1;
 #X obj 950 240 urn 2120;
-#X floatatom 1017 233 5 0 0 1 tempo_de_interação #0-tempo_de_interação
--;
+#X floatatom 1017 233 5 0 0 1 tempo_de_interação \$0-tempo_de_interação - 0;
 #X obj 1084 338 r \$0-dia;
 #X obj 21 12 inlet On/Off;
 #X obj 166 11 inlet loop;
@@ -243,8 +220,7 @@
 #X obj 453 307 s \$0-LOOP_4;
 #X obj 426 328 s \$0-Som_ON/OFF_4;
 #X obj 34 71 f;
-#X obj 119 34 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
+#X obj 119 34 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X msg 162 41 14;
 #X obj 90 273 change;
 #X obj 211 273 change;
@@ -339,7 +315,7 @@
 #X obj 1041 395 s endbang_anuns;
 #X obj 115 561 list prepend set;
 #X obj 115 582 list trim;
-#X msg 115 603 922.63 234.25;
+#X msg 115 603 248.89 172.65;
 #X connect 0 0 5 0;
 #X connect 1 0 0 1;
 #X connect 1 0 3 0;
@@ -411,19 +387,15 @@
 #X connect 64 0 65 0;
 #X connect 65 0 66 0;
 #X restore 48 200 pd melodias_linhas_de_onibus;
-#X obj 288 222 bng 15 250 50 0 empty empty Inicia/Interrompe 17 7 0
-10 -232576 -1 -1;
-#X floatatom 438 229 8 0 0 2 tempo_entre_dados - -;
+#X obj 288 222 bng 15 250 50 0 empty empty Inicia/Interrompe 17 7 0 10 #e0c4fc #000000 #000000;
+#X floatatom 438 229 8 0 0 2 tempo_entre_dados - - 0;
 #X text 686 449 /melodias_buzin;
-#X obj 130 169 tgl 15 0 empty empty Loop 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 53 147 tgl 11 0 empty empty Som_On/Off 17 7 0 10 -258113 -1
--1 1 1;
-#X floatatom 213 154 7 0 0 2 Tempo_de_Iteração_(ms) - -;
+#X obj 130 169 tgl 15 0 empty empty Loop 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 53 147 tgl 11 0 empty empty Som_On/Off 17 7 0 10 #fc0400 #000000 #000000 0 1;
+#X floatatom 213 154 7 0 0 2 Tempo_de_Iteração_(ms) - - 0;
 #X text 637 421 \; ---->;
 #X text 707 485 \; ---->;
-#X obj 48 88 bng 15 250 50 0 empty empty inicio 17 7 0 10 -204786 -1
--1;
+#X obj 48 88 bng 15 250 50 0 empty empty inicio 17 7 0 10 #c4fcc4 #000000 #000000;
 #X obj 278 395 list prepend send;
 #X obj 280 416 list trim;
 #X msg 396 454 disconnect;
@@ -438,29 +410,24 @@
 #X msg 187 63 1;
 #X msg 138 62 1;
 #X obj 66 61 del 1000;
-#N canvas 12 121 1217 624 video 0;
+#N canvas 1254 762 1217 624 video 0;
 #X obj 95 342 oscformat test;
-#X obj 95 282 pak;
 #X obj 394 467 outlet;
 #X obj 378 342 oscformat puts;
-#X obj 378 282 pak;
-#X floatatom 434 270 5 0 0 0 - - -;
-#X floatatom 328 240 5 0 0 0 - - -;
-#X obj 672 282 pak;
-#X floatatom 728 270 5 0 0 0 - - -;
-#X floatatom 622 240 5 0 0 0 - - -;
+#X floatatom 458 272 5 0 0 0 - - - 0;
+#X floatatom 328 240 5 0 0 0 - - - 0;
+#X floatatom 748 267 5 0 0 0 - - - 0;
+#X floatatom 622 240 5 0 0 0 - - - 0;
 #X obj 672 342 oscformat bean;
-#X obj 973 282 pak;
-#X floatatom 1029 275 5 0 0 0 - - -;
-#X floatatom 930 245 5 0 0 0 - - -;
-#X obj 973 342 oscformat anus;
+#X floatatom 1029 275 5 0 0 0 - - - 0;
+#X floatatom 930 245 5 0 0 0 - - - 0;
+#X obj 944 339 oscformat anus;
 #X obj 47 63 r coordenadas_test;
 #X obj 328 71 r coordenadas_puts;
 #X obj 622 81 r coordenadas_bean;
 #X obj 930 76 r coordenadas_anuns;
 #X obj 1007 576 oscformat clear;
-#X obj 1007 514 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+#X obj 1007 514 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 1007 383 r \$0-dia;
 #X obj 1007 419 change;
 #X msg 1007 446 1;
@@ -672,7 +639,7 @@
 #X obj 95 303 t a b;
 #X obj 378 303 t a b;
 #X obj 672 303 t a b;
-#X obj 973 303 t a b;
+#X obj 944 300 t a b;
 #X obj 295 523 list prepend set;
 #X obj 295 544 list trim;
 #X obj 493 545 list prepend set;
@@ -681,7 +648,7 @@
 #X msg 122 322 format ff;
 #X msg 405 322 format ff;
 #X msg 699 322 format ff;
-#X msg 1000 322 format ff;
+#X msg 971 319 format ff;
 #X obj 1029 254 f;
 #X obj 930 224 f;
 #X obj 728 249 f;
@@ -703,83 +670,87 @@
 #X obj 433 227 cyclone/scale 0 1000 896 128;
 #X obj 727 227 cyclone/scale 0 1000 896 128;
 #X obj 1028 232 cyclone/scale 0 1000 896 128;
-#X connect 0 0 2 0;
-#X connect 1 0 34 0;
-#X connect 3 0 2 0;
-#X connect 4 0 35 0;
-#X connect 7 0 36 0;
-#X connect 10 0 2 0;
-#X connect 11 0 37 0;
-#X connect 14 0 2 0;
-#X connect 15 0 29 0;
-#X connect 16 0 30 0;
-#X connect 17 0 31 0;
-#X connect 18 0 32 0;
-#X connect 19 0 2 0;
-#X connect 20 0 33 0;
+#X obj 95 282 cyclone/pak;
+#X obj 378 282 cyclone/pak;
+#X obj 672 282 cyclone/pak;
+#X obj 944 279 cyclone/pak;
+#X connect 0 0 1 0;
+#X connect 2 0 1 0;
+#X connect 7 0 1 0;
+#X connect 10 0 1 0;
+#X connect 11 0 25 0;
+#X connect 12 0 26 0;
+#X connect 13 0 27 0;
+#X connect 14 0 28 0;
+#X connect 15 0 1 0;
+#X connect 16 0 29 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 18 0 23 0;
+#X connect 19 0 16 0;
+#X connect 20 0 16 0;
 #X connect 21 0 22 0;
-#X connect 22 0 23 0;
-#X connect 22 0 27 0;
-#X connect 23 0 20 0;
-#X connect 24 0 20 0;
-#X connect 25 0 26 0;
-#X connect 25 1 24 0;
-#X connect 26 0 20 0;
-#X connect 27 0 25 0;
-#X connect 28 0 2 0;
-#X connect 29 0 64 0;
-#X connect 29 1 58 0;
-#X connect 30 0 65 0;
-#X connect 30 1 59 0;
-#X connect 31 0 66 0;
-#X connect 31 1 60 0;
-#X connect 32 0 67 0;
-#X connect 32 1 61 0;
-#X connect 33 0 19 0;
-#X connect 33 1 55 0;
-#X connect 34 0 0 0;
-#X connect 34 1 43 0;
-#X connect 35 0 3 0;
-#X connect 35 1 44 0;
-#X connect 36 0 10 0;
-#X connect 36 1 45 0;
-#X connect 37 0 14 0;
-#X connect 37 1 46 0;
-#X connect 38 0 39 0;
-#X connect 39 0 57 0;
-#X connect 40 0 41 0;
-#X connect 41 0 56 0;
-#X connect 42 0 40 0;
-#X connect 43 0 0 0;
-#X connect 44 0 3 0;
-#X connect 45 0 10 0;
-#X connect 46 0 14 0;
-#X connect 47 0 12 0;
-#X connect 47 0 11 0;
-#X connect 48 0 13 0;
-#X connect 48 0 11 1;
-#X connect 49 0 8 0;
-#X connect 49 0 7 0;
-#X connect 50 0 9 0;
-#X connect 50 0 7 1;
-#X connect 51 0 5 0;
-#X connect 51 0 4 0;
-#X connect 52 0 6 0;
-#X connect 52 0 4 1;
-#X connect 53 0 1 0;
-#X connect 54 0 1 1;
-#X connect 55 0 19 0;
-#X connect 58 0 54 0;
-#X connect 59 0 52 0;
-#X connect 60 0 50 0;
-#X connect 61 0 48 0;
-#X connect 62 0 63 0;
-#X connect 62 0 27 0;
-#X connect 63 0 25 0;
-#X connect 64 0 53 0;
-#X connect 65 0 51 0;
-#X connect 66 0 49 0;
-#X connect 67 0 47 0;
+#X connect 21 1 20 0;
+#X connect 22 0 16 0;
+#X connect 23 0 21 0;
+#X connect 24 0 1 0;
+#X connect 25 0 60 0;
+#X connect 25 1 54 0;
+#X connect 26 0 61 0;
+#X connect 26 1 55 0;
+#X connect 27 0 62 0;
+#X connect 27 1 56 0;
+#X connect 28 0 63 0;
+#X connect 28 1 57 0;
+#X connect 29 0 15 0;
+#X connect 29 1 51 0;
+#X connect 30 0 0 0;
+#X connect 30 1 39 0;
+#X connect 31 0 2 0;
+#X connect 31 1 40 0;
+#X connect 32 0 7 0;
+#X connect 32 1 41 0;
+#X connect 33 0 10 0;
+#X connect 33 1 42 0;
+#X connect 34 0 35 0;
+#X connect 35 0 53 0;
+#X connect 36 0 37 0;
+#X connect 37 0 52 0;
+#X connect 38 0 36 0;
+#X connect 39 0 0 0;
+#X connect 40 0 2 0;
+#X connect 41 0 7 0;
+#X connect 42 0 10 0;
+#X connect 43 0 8 0;
+#X connect 43 0 67 0;
+#X connect 44 0 9 0;
+#X connect 44 0 67 1;
+#X connect 45 0 5 0;
+#X connect 45 0 66 0;
+#X connect 46 0 6 0;
+#X connect 46 0 66 1;
+#X connect 47 0 3 0;
+#X connect 47 0 65 0;
+#X connect 48 0 4 0;
+#X connect 48 0 65 1;
+#X connect 49 0 64 0;
+#X connect 50 0 64 1;
+#X connect 51 0 15 0;
+#X connect 54 0 50 0;
+#X connect 55 0 48 0;
+#X connect 56 0 46 0;
+#X connect 57 0 44 0;
+#X connect 58 0 59 0;
+#X connect 58 0 23 0;
+#X connect 59 0 21 0;
+#X connect 60 0 49 0;
+#X connect 61 0 47 0;
+#X connect 62 0 45 0;
+#X connect 63 0 43 0;
+#X connect 64 0 30 0;
+#X connect 65 0 31 0;
+#X connect 66 0 32 0;
+#X connect 67 0 33 0;
 #X restore 278 337 pd video;
 #X obj 396 405 r stay_connected;
 #X obj 236 84 t f f;
