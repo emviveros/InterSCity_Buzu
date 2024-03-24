@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # Apple MacOS
 *.DS_Store
+
+# Keys and Tokens
+*.env
