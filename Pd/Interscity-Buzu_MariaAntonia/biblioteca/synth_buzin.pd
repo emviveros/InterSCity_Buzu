@@ -1,11 +1,10 @@
-#N struct 1660-point float x0 float y0 float s;
-#N struct 1660-grid float x0 float y0 float s;
+#N struct 1010-point float x0 float y0 float xs float ys float fg float in float gridx float gridy;
 #N canvas 465 237 471 364 10;
 #X obj 40 12 inlet liga_desl~;
 #N canvas 207 327 651 379 som_linha_de_ônibus 0;
 #X obj 195 207 *~;
 #X obj 399 180 bob~, f 16;
-#X floatatom 519 118 5 0 0 0 - - -;
+#X floatatom 519 118 5 0 0 0 - - - 0;
 #X obj 195 300 *~, f 9;
 #X obj 195 63 unpack, f 45;
 #X obj 195 14 inlet coordenadas_de_um_stops;
@@ -15,7 +14,7 @@
 #X obj 50 21 inlet coordenada_eixo_X_de_stops;
 #X obj 63 253 outlet notaMIDI;
 #X obj 63 197 mtof;
-#X floatatom 80 92 5 0 0 0 - - -;
+#X floatatom 80 92 5 0 0 0 - - - 0;
 #X obj 63 131 i;
 #X obj 63 153 cromatic_to_scales;
 #X obj 63 175 + 12;
@@ -33,7 +32,7 @@
 #X obj 287 13 inlet coordenada_eixo_Y_de_stops;
 #X obj 287 138 mtof;
 #X obj 287 215 line~;
-#X floatatom 287 161 7 0 0 0 - - -;
+#X floatatom 287 161 7 0 0 0 - - - 0;
 #X obj 226 64 loadbang;
 #X obj 110 161 min~;
 #X obj 146 117 -~ 1;
@@ -41,14 +40,14 @@
 #X obj 110 95 phasor~ 220;
 #X obj 32 96 osc~ 220;
 #X obj 32 185 +~, f 13;
-#X floatatom 581 171 5 0 200 0 - - -;
+#X floatatom 581 171 5 0 200 0 - - - 0;
 #X obj 581 189 / 25;
 #X msg 452 147 33;
 #X obj 452 81 moses 500, f 22;
 #X obj 581 233 line~;
 #X obj 287 190 pack 0 50;
 #X obj 581 211 pack 0 50;
-#X floatatom 287 115 5 0 0 0 - - -;
+#X floatatom 287 115 5 0 0 0 - - - 0;
 #X msg 226 82 70;
 #X obj 452 106 scale 0 500 145 70;
 #X obj 287 88 scale 0 1000 145 70;
@@ -93,12 +92,11 @@
 #X restore 372 147 pd parâmetros_para_filtro;
 #X obj 195 126 t b f, f 28;
 #X obj 195 334 outlet~ sinal_de_audio;
-#N canvas 0 22 459 480 enveloSynth 0;
+#N canvas 567 435 459 480 enveloSynth 1;
 #X msg 366 204 1;
 #X msg 232 211 0;
-#X floatatom 309 206 5 0 0 0 - - -;
-#X obj 205 166 bng 20 250 50 0 empty empty empty 17 7 0 10 -261234
--1 -1;
+#X floatatom 309 206 5 0 0 0 - - - 0;
+#X obj 205 166 bng 20 250 50 0 empty empty empty 17 7 0 10 #fcc4c4 #000000 #000000;
 #X obj 232 245 adsr 0.12 5 700 20 100;
 #X obj 72 54 random 20;
 #X obj 112 86 * 0.025;
@@ -106,24 +104,24 @@
 #X obj 205 191 t b b;
 #X obj 205 394 outlet bang_de_fim;
 #X obj 51 20 inlet bang_de_início;
-#X obj 309 153 pak 600 1, f 12;
 #X obj 309 176 unpack 0 0;
 #X obj 43 394 outlet~ sinal_de_controle;
+#X obj 309 153 cyclone/pak 600 1;
 #X connect 0 0 4 0;
 #X connect 1 0 4 0;
 #X connect 2 0 4 3;
 #X connect 3 0 8 0;
-#X connect 4 0 13 0;
+#X connect 4 0 12 0;
 #X connect 4 1 8 0;
 #X connect 5 0 6 0;
 #X connect 6 0 7 0;
-#X connect 7 0 11 1;
+#X connect 7 0 13 1;
 #X connect 8 0 9 0;
 #X connect 8 1 1 0;
 #X connect 10 0 5 0;
-#X connect 11 0 12 0;
-#X connect 12 0 2 0;
-#X connect 12 1 0 0;
+#X connect 11 0 2 0;
+#X connect 11 1 0 0;
+#X connect 13 0 11 0;
 #X restore 195 177 pd enveloSynth;
 #X f 16;
 #X text 146 206 síntese;
@@ -135,8 +133,7 @@
 #X obj 61 553 outlet~ sinal_de_entrada;
 #N canvas 0 0 450 300 init 0;
 #X obj 214 41 loadbang;
-#X msg 217 77 \; del-sin 1 \; fb-sin 1 \; gain-flat 1 \; lp-freq 220
-\; slope -0.04 \; crossfade 0.5 \;;
+#X msg 217 77 \; del-sin 1 \; fb-sin 1 \; gain-flat 1 \; lp-freq 220 \; slope -0.04 \; crossfade 0.5 \;;
 #X connect 0 0 1 0;
 #X restore 824 18 pd init;
 #N canvas 0 0 612 483 equal_power_crossfade 0;
@@ -174,8 +171,7 @@
 #X connect 10 0 6 0;
 #X connect 11 0 5 0;
 #X restore 39 266 pd pan_core;
-#X text 256 437 Adapted from [equal_power_pan~] \, Hans-Christoph Steiner
-\, 2004;
+#X text 256 437 Adapted from [equal_power_pan~] \, Hans-Christoph Steiner \, 2004;
 #X text 411 449 comment;
 #X obj 128 46 inlet~;
 #X connect 0 0 8 0;
@@ -189,14 +185,12 @@
 #X connect 8 0 2 0;
 #X connect 11 0 8 2;
 #X restore 106 484 pd equal_power_crossfade;
-#X obj 250 436 hsl 128 25 0 1 0 0 empty crossfade Dry_---_Wet_(crossfade)
--2 -8 0 10 -4034 -1 -1 6350 1;
+#X obj 250 436 hsl 128 25 0 1 0 0 empty crossfade Dry_---_Wet_(crossfade) -2 -8 0 10 #00fc04 #000000 #000000 0 1;
 #X obj 163 50 Guitar_specdelay~;
 #X obj 162 437 *~ 10;
 #N canvas 0 0 450 300 init 0;
 #X obj 214 41 loadbang;
-#X msg 217 77 \; del-sin 13 \; fb-sin 13 \; gain-flat 1 \; lp-freq
-220 \; slope -0.04 \; crossfade 0.5 \;;
+#X msg 217 77 \; del-sin 13 \; fb-sin 13 \; gain-flat 1 \; lp-freq 220 \; slope -0.04 \; crossfade 0.5 \;;
 #X connect 0 0 1 0;
 #X restore 676 7 pd init;
 #X msg 494 12 \; del-sin \$1;
@@ -210,7 +204,7 @@
 #X connect 9 0 8 0;
 #X restore 195 265 pd efeitos;
 #X obj 111 71 inlet vel;
-#X floatatom 24 35 5 0 0 0 - - -;
+#X floatatom 24 35 5 0 0 0 - - - 0;
 #X connect 0 0 17 0;
 #X connect 1 0 0 1;
 #X connect 2 0 9 1;
