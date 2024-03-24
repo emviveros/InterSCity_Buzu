@@ -1,4 +1,4 @@
-#N canvas 353 118 926 590 10;
+#N canvas 983 836 926 590 10;
 #X declare -path ./biblioteca;
 #X obj 25 17 inlet Entradas;
 #X obj 251 17 inlet hora_do_transporte;
@@ -9,11 +9,11 @@
 #X obj 330 163 velocidade_media_de_uma_linha;
 #X obj 82 163 velocidades_medias_da_linha;
 #X obj 82 95 t f f;
-#X floatatom 116 214 10 0 0 0 - - -;
+#X floatatom 116 214 10 0 0 0 - - - 0;
 #X obj 82 256 /;
-#X floatatom 82 294 10 0 0 0 - - -;
+#X floatatom 82 294 10 0 0 0 - - - 0;
 #X obj 82 315 moses 0;
-#X floatatom 121 335 10 0 0 0 - - -;
+#X floatatom 121 335 10 0 0 0 - - - 0;
 #X obj 25 75 route bang;
 #X obj 251 95 t f f;
 #X obj 474 95 t f f;
@@ -25,8 +25,7 @@
 #X obj 259 40 r pd~_hora;
 #X obj 484 46 r pd~_dia;
 #X obj 308 548 stdout;
-#X obj 12 430 list prepend taxa_de_variação_de_velocidade_média
-;
+#X obj 12 430 list prepend taxa_de_variação_de_velocidade_média;
 #X obj 12 451 list trim;
 #X obj 312 451 list trim;
 #X obj 312 430 list prepend bang_de_dado_inválido;
@@ -36,12 +35,11 @@
 #X obj 775 430 list prepend velocidade_média_da_linha;
 #X obj 740 24 declare -path ./biblioteca;
 #X obj 742 48 dados_interscity;
-#X obj 632 138 prepend set;
-#X msg 632 159 1185;
-#X obj 614 160 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
+#X msg 632 159 1746;
+#X obj 614 160 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 484 67 change;
 #X obj 259 61 change;
+#X obj 632 138 cyclone/prepend set;
 #X connect 0 0 14 0;
 #X connect 1 0 15 0;
 #X connect 2 0 16 0;
@@ -72,9 +70,9 @@
 #X connect 20 0 10 1;
 #X connect 20 1 19 0;
 #X connect 21 0 14 0;
-#X connect 21 0 35 0;
-#X connect 22 0 39 0;
-#X connect 23 0 38 0;
+#X connect 21 0 39 0;
+#X connect 22 0 38 0;
+#X connect 23 0 37 0;
 #X connect 25 0 26 0;
 #X connect 26 0 24 0;
 #X connect 27 0 24 0;
@@ -83,7 +81,7 @@
 #X connect 30 0 29 0;
 #X connect 31 0 24 0;
 #X connect 32 0 31 0;
-#X connect 35 0 36 0;
-#X connect 35 0 37 0;
-#X connect 38 0 16 0;
-#X connect 39 0 15 0;
+#X connect 37 0 16 0;
+#X connect 38 0 15 0;
+#X connect 39 0 35 0;
+#X connect 39 0 36 0;
