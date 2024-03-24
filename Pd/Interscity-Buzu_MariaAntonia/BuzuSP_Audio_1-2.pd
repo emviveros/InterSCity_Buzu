@@ -1,18 +1,13 @@
-#N struct 1010-point float x0 float y0 float s;
-#N struct 1010-grid float x0 float y0 float s;
-#N struct 1019-point float x0 float y0 float s;
-#N struct 1019-grid float x0 float y0 float s;
-#N struct 1028-point float x0 float y0 float s;
-#N struct 1028-grid float x0 float y0 float s;
-#N struct 1037-point float x0 float y0 float s;
-#N struct 1037-grid float x0 float y0 float s;
+#N struct 1010-point float x0 float y0 float xs float ys float fg float in float gridx float gridy;
+#N struct 1253-point float x0 float y0 float xs float ys float fg float in float gridx float gridy;
+#N struct 1274-point float x0 float y0 float xs float ys float fg float in float gridx float gridy;
+#N struct 1295-point float x0 float y0 float xs float ys float fg float in float gridx float gridy;
 #N canvas 412 106 611 495 10;
 #X declare -path ./modulos;
 #X declare -path ./biblioteca;
 #X obj 6 21 declare -path ./modulos;
 #X obj 6 2 declare -path ./biblioteca;
-#X text 5 39 Dependências \; Cyclone \; Zexy \; list-abs \; else,
-f 14;
+#X text 5 39 Dependências \; Cyclone \; Zexy \; list-abs \; else, f 14;
 #N canvas 184 194 777 445 synth_melodia_das_linhas_de_onibus 0;
 #X obj 40 17 inlet netreceive;
 #X obj 47 42 oscparse;
@@ -28,16 +23,11 @@ f 14;
 #X obj 323 398 outlet~;
 #X text 168 401 1;
 #X text 310 398 2;
-#X obj 598 83 tgl 90 0 empty empty espacialização 3 40 0 10 -262144
--1 -1 0 1;
-#X obj 583 67 bng 15 250 50 0 empty empty speaker_1 -17 -7 0 10 -262144
--1 -1;
-#X obj 688 67 bng 15 250 50 0 empty empty speaker_2 -17 -7 0 10 -262144
--1 -1;
-#X obj 688 174 bng 15 250 50 0 empty empty speaker_4 -17 23 0 10 -262144
--1 -1;
-#X obj 582 174 bng 15 250 50 0 empty empty speaker_3 -17 23 0 10 -262144
--1 -1;
+#X obj 598 83 tgl 90 0 empty empty espacialização 3 40 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 583 67 bng 15 250 50 0 empty empty speaker_1 -17 -7 0 10 #fcfcfc #000000 #000000;
+#X obj 688 67 bng 15 250 50 0 empty empty speaker_2 -17 -7 0 10 #fcfcfc #000000 #000000;
+#X obj 688 174 bng 15 250 50 0 empty empty speaker_4 -17 23 0 10 #fcfcfc #000000 #000000;
+#X obj 582 174 bng 15 250 50 0 empty empty speaker_3 -17 23 0 10 #fcfcfc #000000 #000000;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
@@ -65,19 +55,16 @@ f 14;
 #X obj 462 143 route velocidade_do_trajeto_atual;
 #X obj 49 93 route buzu;
 #X obj 49 114 route drone;
-#X obj 292 178 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
+#X obj 292 178 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 692 143 route velocidade_media_da_linha;
 #X obj 432 407 outlet~;
-#X floatatom 12 172 7 0 0 0 - - -;
-#X floatatom 471 166 7 0 0 0 - - -;
+#X floatatom 12 172 7 0 0 0 - - - 0;
+#X floatatom 471 166 7 0 0 0 - - - 0;
 #X obj 431 293 synth_drone;
 #X obj 493 407 outlet~;
-#X floatatom 700 162 7 0 0 0 - - -;
-#X obj 702 188 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X text 750 162 o dado de velocidade média é atualizado a cada novo
-trecho do trajeto, f 22;
+#X floatatom 700 162 7 0 0 0 - - - 0;
+#X obj 702 188 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
+#X text 750 162 o dado de velocidade média é atualizado a cada novo trecho do trajeto, f 22;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 6 0;
