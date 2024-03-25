@@ -11,6 +11,7 @@ class OlhoVivoAPI:
     """
     Classe para interagir com a API do Olho Vivo.
     Ref.: https://www.sptrans.com.br/desenvolvedores/api-do-olho-vivo-guia-de-referencia/documentacao-api/#docApi-acesso
+    Acesso em: 24/03/2024
     """
 
     def __init__(self, token):
