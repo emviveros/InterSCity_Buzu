@@ -179,6 +179,11 @@ class OlhoVivoAPI:
                                   de cada corredor do sistema e pode ser obtido através do método buscar_corredores
         Returns:
             dict: A resposta da API convertida em um dicionário Python, ou None se a requisição falhar.
+                [int]       cp Código identificador da Parada.
+                [string]    np: Nome da parada
+                [string]    ed: Endereço de localização da parada
+                [double]    py: Latitude da parada
+                [double]    px: Longitude da parada
         """
         return self.get(f'/Parada/BuscarParadasPorCorredor?codigoCorredor={codigoCorredor}')
 
@@ -198,6 +203,31 @@ class OlhoVivoAPI:
         """
         return self.get('/Empresa')
     
+    def posicao_veiculos(self):
+        """
+        Retorna uma lista completa com a última localização de todos os veículos mapeados com suas devidas posições lat / long
+
+        Returns:
+            dict: A resposta da API convertida em um dicionário Python, ou None se a requisição falhar.
+                hr (string): Horário de referência da geração das informações
+                ([])        l: Relação de linhas localizadas onde:
+                    [string]    c: Letreiro completo
+                    [int]       cl: Código identificador da linha
+                    [int]       sl: Sentido de operação onde 1 significa de Terminal Principal para Terminal Alternativo e
+                                    2 significa de Terminal Alternativo para Terminal Principal
+                    [string]    lt0: Letreiro de destino da linha
+                    [string]    lt1: Letreiro de origem da linha
+                    [int]       qv: Quantidade de veículos localizados
+                    [{}]        vs: Relação de veículos localizados, onde:
+                            [int]   p: Prefixo do veículo
+                            [bool]  a: Indica se o veículo é (true) ou não (false) acessível para pessoas com deficiência
+                            [string] ta: Indica o horário universal (UTC) em que a localização foi capturada.
+                                         Essa informação está no padrão ISO 8601
+                            [double] py: Informação de latitude da localização do veículo
+                            [double] px: Informação de longitude da localização do veículo
+        """
+        return self.get('/Posicao')
+
     def posicao_linha(self, codigoLinha):
         """
         Retorna uma lista com todos os veículos de uma determinada linha com suas devidas posições lat / long
