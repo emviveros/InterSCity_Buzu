@@ -280,10 +280,10 @@ class OlhoVivoAPI:
                         [double] py: Informação de latitude da localização do veículo
                         [double] px: Informação de longitude da localização do veículo
         """
-        if codigoLinha:
-            return self.get(f'/Posicao/Garagem?{codigoEmpresa}=0&{codigoLinha}=0')
+        if codigoLinha is not None:
+            return self.get(f'/Posicao/Garagem?codigoEmpresa={codigoEmpresa}&codigoLinha={codigoLinha}')
         else:
-            return self.get(f'/Posicao/Garagem?{codigoEmpresa}=0')
+            return self.get(f'/Posicao/Garagem?codigoEmpresa={codigoEmpresa}')
     
     def previsao_chegada(self, codigoParada, codigoLinha):
         """ 
