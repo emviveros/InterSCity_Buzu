@@ -299,19 +299,27 @@ class OlhoVivoAPI:
         Returns:
            dict: A resposta da API convertida em um dicionário Python, ou None se a requisição falhar.
                 [string]    hr: Horário de referência da geração das informações
-                {}          p:  Representa um ponto de parada onde:
+                [{}]        p:  Representa um ponto de parada onde:
                     [int]    cp:  Código identificador da parada
                     [string] np:  Nome da parada
                     [double] py: Informação de latitude da localização do veículo
                     [double] px: Informação de longitude da localização do veículo
-                    [{}]     vs: Relação de veículos localizados, onde:
-                        [int]    p:  Prefixo do veículo
-                        [string] t:  Horário previsto para chegada do veículo no ponto de parada relacionado
-                        [bool]   a:  Indica se o veículo é (true) ou não (false) acessível para pessoas com deficiência
-                        [string] ta: Indica o horário universal (UTC) em que a localização foi capturada.
-                                     Essa informação está no padrão ISO 8601
-                        [double] py: Informação de latitude da localização do veículo
-                        [double] px: Informação de longitude da localização do veículo
+                    [{}]      l: Relação de veículos localizados, onde:
+                        [string]  c:  Letreiro completo
+                        [int]    cl:  Código identificador da linha
+                        [int]    sl:  Sentido de operação onde 1 significa de Terminal Principal para
+                                      Terminal Secundário e 2 de Terminal Secundário para Terminal Principal
+                        [string] lt0: Letreiro de destino da linha
+                        [string] lt1: Letreiro de origem da linha
+                        [int]    qv:  Quantidade de veículos localizados
+                        [{}]     vs:  Relação de veículos localizados, onde:
+                            [int]    p:  Prefixo do veículo
+                            [string] t:  Horário previsto para chegada do veículo no ponto de parada relacionado
+                            [bool]   a:  Indica se o veículo é (true) ou não (false) acessível para pessoas com deficiência
+                            [string] ta: Indica o horário universal (UTC) em que a localização foi capturada. 
+                                         Essa informação está no padrão ISO 8601
+                            [double] py: Informação de latitude da localização do veículo
+                            [double] px: Informação de longitude da localização do veículo
         """
         return self.get(f'/Previsao?codigoParada={codigoParada}&codigoLinha={codigoLinha}')
     
@@ -343,7 +351,7 @@ class OlhoVivoAPI:
         """
         return self.get(f'/Previsao/Linha?codigoLinha={codigoLinha}')
     
-    def previsao_paradas(self, codigoParada):
+    def previsao_parada(self, codigoParada):
         """
         Retorna uma lista com a previsão de chegada dos veículos de cada uma das linhas que atendem ao ponto de parada informado.
 
