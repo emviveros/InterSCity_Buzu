@@ -1,0 +1,5 @@
+#N canvas 575 62 963 522 12;
+#X obj 288 54 py4pd -lib buzuDados;
+#X obj 367 224 autenticar_OlhoVivoAPI;
+#X obj 382 168 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000;
+#X connect 2 0 1 0;
