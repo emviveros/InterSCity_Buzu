@@ -1,0 +1,7 @@
+#N canvas 1518 1553 450 300 12;
+#X obj 140 24 py4pd -lib teste_poo;
+#X obj 123 95 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000;
+#X obj 124 182 else/display;
+#X obj 115 140 logging_teste;
+#X connect 1 0 3 0;
+#X connect 3 0 2 0;
