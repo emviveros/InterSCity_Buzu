@@ -19,10 +19,6 @@ api_token = os.getenv("API_TOKEN")
 # Criar uma instância de api_olhovivo 
 api = api_olhovivo.OlhoVivoAPI(api_token)
 
-
-def init_teste():
-    return pd.print("teste de acentuação bem sucedido")
-
 def autenticar_OlhoVivoAPI():
     return api.authenticate()  # Chamar o método authenticate do módulo api_olhovivo
 
@@ -53,6 +49,7 @@ def buscar_linha_sentido(codigoLinha_sentido):
         return pd.logpost(1, 'Nenhum resultado encontrado')
 
 
+
 def py4pdLoadObjects():
     """
     Carrega os objetos Python para o Py4PD.
@@ -74,8 +71,5 @@ def py4pdLoadObjects():
     # buzuLinhaSentido.help_patch = "buzu.linha.sentido-help.pd"
     buzuLinhaSentido.add_object()
 
-    teste = pd.new_object("init_teste")
-    teste.addmethod_bang(init_teste)
-    teste.add_object()
 
 
