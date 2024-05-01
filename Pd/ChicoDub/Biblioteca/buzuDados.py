@@ -40,11 +40,17 @@ def buscar_linha(termosBusca):
             pd.out(f"{item1['cl']} {item1['lc']} {item1['lt']}-{item1['tl']} {item1['tp']}", symbol="", out_n=0)
             pd.out(f"{item2['cl']} {item2['lc']} {item2['lt']}-{item2['tl']} {item2['ts']}", symbol="", out_n=1)    
     else:
-        # pd.out(0, symbol="", out_n=0)
-        # pd.out(0, symbol="", out_n=1)
         return pd.logpost(1, 'Nenhum resultado encontrado')
 
-    
+def buscar_linha_sentido(codigoLinha_sentido):
+    codigoLinha, sentido = codigoLinha_sentido
+    info = api.buscar_linha_sentido(codigoLinha, sentido)
+    if info != "":        
+        # Imprimir os resultados
+        for item in info:
+            pd.out(f"{item['cl']} {item['lc']} {item['lt']}-{item['tl']} {item['tp']}")  
+    else:
+        return pd.logpost(1, 'Nenhum resultado encontrado')
 
 
 def py4pdLoadObjects():
@@ -57,10 +63,16 @@ def py4pdLoadObjects():
     autenticar.addmethod_bang(autenticar_OlhoVivoAPI)
     autenticar.add_object()
 
-    buzu_linha = pd.new_object("buzu.linha")
-    buzu_linha.addmethod_anything(buscar_linha)
-    buzu_linha.n_extra_outlets = 1
-    buzu_linha.add_object()
+    buzuLinha = pd.new_object("buzu.linha")
+    buzuLinha.addmethod_anything(buscar_linha)
+    # buzuLinha.help_patch = "buzu.linha-help.pd"
+    buzuLinha.n_extra_outlets = 1
+    buzuLinha.add_object()
+
+    buzuLinhaSentido = pd.new_object("buzu.linha.sentido")
+    buzuLinhaSentido.addmethod_list(buscar_linha_sentido)
+    # buzuLinhaSentido.help_patch = "buzu.linha.sentido-help.pd"
+    buzuLinhaSentido.add_object()
 
     teste = pd.new_object("init_teste")
     teste.addmethod_bang(init_teste)
