@@ -100,6 +100,53 @@ def buscar_empresas():
     else:
         return pd.logpost(1, 'Nenhum resultado encontrado')
 
+def posicao_veiculos():
+    info = api.posicao_veiculos()
+    if info != "":
+        # Extrair hora da consulta
+        hora_consulta = info['hr']
+
+        # Lista para armazenar informações dos veículos
+        lista_veiculos = []
+
+        # Iterar sobre as linhas e veículos
+        for linha in info['l']:
+            codigo_linha = linha['c']
+            codigo_linha_circular = linha['cl']
+            sentido_linha = linha['sl']
+            letreiro_0 = linha['lt0']
+            letreiro_1 = linha['lt1']
+            quantidade_veiculos = linha['qv']
+
+            for veiculo in linha['vs']:
+                prefixo = veiculo['p']
+                acessivel = veiculo['a']
+                data_hora = veiculo['ta']
+                latitude = veiculo['py']
+                longitude = veiculo['px']
+
+                # Adicionar informações à lista
+                lista_veiculos.append({
+                    'hr': hora_consulta, 
+                    'c': codigo_linha, 
+                    'cl': codigo_linha_circular,
+                    'sl': sentido_linha,
+                    'lt0': letreiro_0,
+                    'lt1': letreiro_1,
+                    'qv': quantidade_veiculos,
+                    'p': prefixo,
+                    'a': acessivel,
+                    'ta': data_hora,
+                    'py': latitude,
+                    'px': longitude
+                })
+
+        # Imprimir os resultados
+        for veiculo in lista_veiculos:
+            pd.out(f"{veiculo['hr']} {veiculo['c']} {veiculo['cl']} {veiculo['sl']} {veiculo['lt0']} {veiculo['lt1']} {veiculo['qv']} {veiculo['p']} {veiculo['a']} {veiculo['ta']} {veiculo['py']} {veiculo['px']}")  
+    else:
+        return pd.logpost(1, 'Nenhum resultado encontrado')
+
 
 def py4pdLoadObjects():
     """
@@ -141,3 +188,8 @@ def py4pdLoadObjects():
     buzuBuscarEmpresas.addmethod_bang(buscar_empresas)
     # buzuBuscarEmpresas.help_patch = "buzu.empresas-help.pd"
     buzuBuscarEmpresas.add_object()
+
+    buzuPosicaoVeiculos = pd.new_object("buzu.posicao.veiculos")
+    buzuPosicaoVeiculos.addmethod_bang(posicao_veiculos)
+    # buzuPosicaoVeiculos.help_patch = "buzu.posicao.veiculos-help.pd"
+    buzuPosicaoVeiculos.add_object()
