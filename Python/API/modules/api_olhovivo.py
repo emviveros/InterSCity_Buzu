@@ -159,7 +159,7 @@ class OlhoVivoAPI:
         """
         return self.get(f'/Parada/BuscarParadasPorLinha?codigoLinha={codigoLinha}')
    
-    def buscar_corredores(self):
+    def buscar_corredores_inteligentes(self):
         """
         Retorna uma lista com todos os corredores inteligentes.
 
