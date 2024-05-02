@@ -140,7 +140,7 @@ class OlhoVivoAPI:
         """
         return self.get(f'/Linha/BuscarLinhaSentido?termosBusca={codigoLinha}&sentido={sentido}')
 
-    def buscar_paradas(self, termosBusca):
+    def buscar_parada(self, termosBusca):
         """
         Realiza uma busca fonética das paradas de ônibus do sistema com base no parâmetro informado.
         A consulta é realizada no nome da parada e também no seu endereço de localização.
@@ -160,7 +160,7 @@ class OlhoVivoAPI:
 
     def buscar_paradas_por_linha(self, codigoLinha):
         """
-        Realiza uma busca por todos os pontos de parada atendidos por uma determinada linha.
+        Realiza uma busca por todos os pontos de parada atendidos por uma determinada linha. (NÃO FUNCIONA)
 
         Args:
             codigoLinha (int): Código identificador da linha. Este é um código identificador único de
@@ -177,7 +177,7 @@ class OlhoVivoAPI:
         """
         return self.get(f'/Parada/BuscarParadasPorLinha?codigoLinha={codigoLinha}')
    
-    def buscar_corredores(self):
+    def buscar_corredores_inteligentes(self):
         """
         Retorna uma lista com todos os corredores inteligentes.
 
