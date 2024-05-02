@@ -58,11 +58,20 @@ def buscar_parada(termosBusca):
         return pd.logpost(1, 'Nenhum resultado encontrado')
 
 def buscar_corredores_inteligentes():
-    info = api.buscar_corredores()
+    info = api.buscar_corredores_inteligentes()
     if info != "":
         # Imprimir os resultados
         for item in info:
             pd.out(f"{item['cc']} {item['nc']}")  
+    else:
+        return pd.logpost(1, 'Nenhum resultado encontrado')
+
+def buscar_paradas_por_corredor(codigoCorredor):
+    info = api.buscar_paradas_por_corredor(codigoCorredor)
+    if info != "":
+        # Imprimir os resultados
+        for item in info:
+            pd.out(f"#{item['cp']} {item['np']} {item['ed']} {item['py']} {item['px']}")  
     else:
         return pd.logpost(1, 'Nenhum resultado encontrado')
 
@@ -97,5 +106,8 @@ def py4pdLoadObjects():
     # buzuBuscarCorredores.help_patch = "buzu.corredores-help.pd"
     buzuBuscarCorredores.add_object()
 
-
+    buzuBscarParadasPorCorredor = pd.new_object("buzu.paradas.corredor")
+    buzuBscarParadasPorCorredor.addmethod_anything(buscar_paradas_por_corredor)
+    # buzuBscarParadasPorCorredor.help_patch = "buzu.paradas.corredor-help.pd"
+    buzuBscarParadasPorCorredor.add_object()
 
