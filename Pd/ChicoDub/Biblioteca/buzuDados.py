@@ -48,7 +48,23 @@ def buscar_linha_sentido(codigoLinha_sentido):
     else:
         return pd.logpost(1, 'Nenhum resultado encontrado')
 
+def buscar_parada(termosBusca):
+    info = api.buscar_parada(termosBusca)
+    if info != "":
+        # Imprimir os resultados
+        for item in info:
+            pd.out(f"#{item['cp']} {item['np']} {item['ed']} {item['py']} {item['px']}")  
+    else:
+        return pd.logpost(1, 'Nenhum resultado encontrado')
 
+def buscar_corredores_inteligentes():
+    info = api.buscar_corredores()
+    if info != "":
+        # Imprimir os resultados
+        for item in info:
+            pd.out(f"{item['cc']} {item['nc']}")  
+    else:
+        return pd.logpost(1, 'Nenhum resultado encontrado')
 
 def py4pdLoadObjects():
     """
@@ -70,6 +86,16 @@ def py4pdLoadObjects():
     buzuLinhaSentido.addmethod_list(buscar_linha_sentido)
     # buzuLinhaSentido.help_patch = "buzu.linha.sentido-help.pd"
     buzuLinhaSentido.add_object()
+
+    buzuBuscaParada = pd.new_object("buzu.parada")
+    buzuBuscaParada.addmethod_anything(buscar_parada)
+    # buzuBuscaParada.help_patch = "buzu.parada-help.pd"
+    buzuBuscaParada.add_object()
+
+    buzuBuscarCorredores = pd.new_object("buzu.corredores.inteligentes")
+    buzuBuscarCorredores.addmethod_bang(buscar_corredores_inteligentes)
+    # buzuBuscarCorredores.help_patch = "buzu.corredores-help.pd"
+    buzuBuscarCorredores.add_object()
 
 
 
