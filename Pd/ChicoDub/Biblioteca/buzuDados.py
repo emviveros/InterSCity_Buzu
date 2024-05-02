@@ -75,6 +75,32 @@ def buscar_paradas_por_corredor(codigoCorredor):
     else:
         return pd.logpost(1, 'Nenhum resultado encontrado')
 
+def buscar_empresas():
+    info = api.buscar_empresas()
+    if info != "":
+        # Extrair hora da consulta
+        hora_consulta = info['hr']
+
+        # Lista para armazenar informações das empresas
+        lista_empresas = []
+
+        # Iterar sobre as áreas de operação e empresas
+        for area_operacao in info['e']:
+            codigo_area = area_operacao['a']
+            for empresa in area_operacao['e']:
+                codigo_empresa = empresa['c']
+                nome_empresa = empresa['n']
+
+                # Adicionar informações à lista
+                lista_empresas.append({'hr': hora_consulta, 'a': codigo_area, 'c': codigo_empresa, 'n': nome_empresa})
+
+        # Imprimir os resultados
+        for empresa in lista_empresas:
+            pd.out(f"{empresa['hr']} {empresa['a']} {empresa['c']} {empresa['n']}")  
+    else:
+        return pd.logpost(1, 'Nenhum resultado encontrado')
+
+
 def py4pdLoadObjects():
     """
     Carrega os objetos Python para o Py4PD.
@@ -106,8 +132,12 @@ def py4pdLoadObjects():
     # buzuBuscarCorredores.help_patch = "buzu.corredores-help.pd"
     buzuBuscarCorredores.add_object()
 
-    buzuBscarParadasPorCorredor = pd.new_object("buzu.paradas.corredor")
-    buzuBscarParadasPorCorredor.addmethod_anything(buscar_paradas_por_corredor)
-    # buzuBscarParadasPorCorredor.help_patch = "buzu.paradas.corredor-help.pd"
-    buzuBscarParadasPorCorredor.add_object()
+    buzuBuscarParadasPorCorredor = pd.new_object("buzu.paradas.corredor")
+    buzuBuscarParadasPorCorredor.addmethod_anything(buscar_paradas_por_corredor)
+    # buzuBuscarParadasPorCorredor.help_patch = "buzu.paradas.corredor-help.pd"
+    buzuBuscarParadasPorCorredor.add_object()
 
+    buzuBuscarEmpresas = pd.new_object("buzu.empresas")
+    buzuBuscarEmpresas.addmethod_bang(buscar_empresas)
+    # buzuBuscarEmpresas.help_patch = "buzu.empresas-help.pd"
+    buzuBuscarEmpresas.add_object()
