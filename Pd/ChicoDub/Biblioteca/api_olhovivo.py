@@ -258,13 +258,12 @@ class OlhoVivoAPI:
                 [string]    hr: Horário de referência da geração das informações
                 [{}]        vs: Relação de veículos localizados, onde:
                     [int]   p: Prefixo do veículo
-                    [bool]  a: Relação de empresa
-                        [int]    a:  Indica se o veículo é (true) ou não (false) acessível para pessoas com deficiência
-                        [int]    c:  Código de referência da empresa
-                        [string] ta: Indica o horário universal (UTC) em que a localização foi capturada.
-                                     Essa informação está no padrão ISO 8601
-                        [double] py: Informação de latitude da localização do veículo
-                        [double] px: Informação de longitude da localização do veículo
+                    [bool]  a:  Indica se o veículo é (true) ou não (false) acessível para pessoas com deficiência
+                    [int]   c:  Código de referência da empresa
+                    [string] ta: Indica o horário universal (UTC) em que a localização foi capturada.
+                                    Essa informação está no padrão ISO 8601
+                    [double] py: Informação de latitude da localização do veículo
+                    [double] px: Informação de longitude da localização do veículo
         """
         return self.get(f'/Posicao/Linha?codigoLinha={codigoLinha}')
     
