@@ -147,6 +147,32 @@ def posicao_veiculos():
     else:
         return pd.logpost(1, 'Nenhum resultado encontrado')
 
+def posicao_linha(codigoLinha):
+    info = api.posicao_linha(codigoLinha)
+    if info != "":
+        # Extrair hora da consulta
+        hora_consulta = info['hr']
+
+        # Lista para armazenar informações dos veículos
+        lista_veiculos = []
+
+        # Iterar sobre os veículos
+        for veiculo in info['vs']:
+            prefixo = veiculo['p']
+            acessivel = veiculo['a']
+            data_hora = veiculo['ta']
+            latitude = veiculo['py']
+            longitude = veiculo['px']
+
+            # Adicionar informações à lista
+            lista_veiculos.append({'hr': hora_consulta, 'p': prefixo, 'a': acessivel, 'ta': data_hora, 'py': latitude, 'px': longitude})
+
+        # Imprimir os resultados
+        for veiculo in lista_veiculos:
+            pd.out(f"{veiculo['hr']} {veiculo['p']} {veiculo['a']} {veiculo['ta']} {veiculo['py']} {veiculo['px']}")  
+    else:
+        return pd.logpost(1, 'Nenhum resultado encontrado')
+
 
 def py4pdLoadObjects():
     """
@@ -193,3 +219,8 @@ def py4pdLoadObjects():
     buzuPosicaoVeiculos.addmethod_bang(posicao_veiculos)
     # buzuPosicaoVeiculos.help_patch = "buzu.posicao.veiculos-help.pd"
     buzuPosicaoVeiculos.add_object()
+
+    buzuPosicaoLinha = pd.new_object("buzu.posicao.linha")
+    buzuPosicaoLinha.addmethod_anything(posicao_linha)
+    # buzuPosicaoLinha.help_patch = "buzu.posicao.linha-help.pd"
+    buzuPosicaoLinha.add_object()
