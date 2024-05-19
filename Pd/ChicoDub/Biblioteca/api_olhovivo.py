@@ -28,7 +28,7 @@ class OlhoVivoAPI:
         """
         # self.authenticate()
 
-        self.base_url = 'http://api.olhovivo.sptrans.com.br/v2.1'
+        self.base_url = 'https://api.olhovivo.sptrans.com.br/v2.1'
         self.token = token
         self.headers = {'Content-Type': 'application/json'}
 
