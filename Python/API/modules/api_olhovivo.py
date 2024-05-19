@@ -21,7 +21,7 @@ class OlhoVivoAPI:
         Args:
             token (str): O token de autenticação para a API do Olho Vivo.
         """
-        self.base_url = 'http://api.olhovivo.sptrans.com.br/v2.1'
+        self.base_url = 'https://api.olhovivo.sptrans.com.br/v2.1'
         self.token = token
         self.headers = {'Content-Type': 'application/json'}
         self.authenticate()
@@ -122,7 +122,7 @@ class OlhoVivoAPI:
         """
         return self.get(f'/Linha/BuscarLinhaSentido?termosBusca={codigoLinha}&sentido={sentido}')
 
-    def buscar_paradas(self, termosBusca):
+    def buscar_parada(self, termosBusca):
         """
         Realiza uma busca fonética das paradas de ônibus do sistema com base no parâmetro informado.
         A consulta é realizada no nome da parada e também no seu endereço de localização.
