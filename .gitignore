@@ -402,3 +402,6 @@ FodyWeavers.xsd
 
 # Keys and Tokens
 *.env
+
+# Test files
+Testes/*
