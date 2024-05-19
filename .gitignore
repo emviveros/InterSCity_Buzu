@@ -404,4 +404,5 @@ FodyWeavers.xsd
 *.env
 
 # Test files
+Python/API/notebooks/Testes/*
 Testes/*
