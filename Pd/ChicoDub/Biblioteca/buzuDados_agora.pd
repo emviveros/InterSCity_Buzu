@@ -117,7 +117,6 @@
 #X connect 5 0 7 0;
 #X connect 8 0 5 0;
 #X restore 540 248 pd buzu.paradas.corredor REVISAR;
-#X obj 172 216 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000;
 #N canvas 1334 95 749 620 buzu.empresas 0;
 #X obj 4 4 cnv 15 740 95 empty empty empty 20 12 0 14 #e0e0e0 #404040 0;
 #X obj 22 13 cnv 5 5 5 empty empty [buzu.empresas] 0 12 0 18 #e0e0e0 #404040 0;
@@ -131,7 +130,6 @@
 #X connect 4 0 6 0;
 #X connect 6 0 7 0;
 #X restore 597 275 pd buzu.empresas;
-#X obj 189 316 buzu.posicao.veiculos;
 #N canvas 1370 155 749 620 buzu.posicao.veiculos 0;
 #X obj 4 4 cnv 15 740 95 empty empty empty 20 12 0 14 #e0e0e0 #404040 0;
 #X obj 21 13 cnv 5 5 5 empty empty [buzu.posicao.veiculos] 0 12 0 18 #e0e0e0 #404040 0;
@@ -148,6 +146,8 @@
 #X connect 5 0 7 0;
 #X connect 6 0 5 0;
 #X restore 541 301 pd buzu.posicao.veiculos REVISAR;
+#X obj 189 316 buzu.posicao.linha;
+#X msg 185 235 33398;
 #X connect 4 0 7 0;
-#X connect 14 0 16 0;
 #X connect 16 0 10 0;
+#X connect 17 0 16 0;
